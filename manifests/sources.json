@@ -1,0 +1,14 @@
+{
+  "status": "planning_inputs_not_verified",
+  "release": "dataset-v1.1",
+  "sources": [
+    {"name": "Req2Test-Bench dataset", "url": "https://huggingface.co/datasets/code-philia/Req2Test-Bench", "recorded_revision": "0dfb049d5c9bfd0d8c98d23c22af7d02ee6865a3", "verified": false},
+    {"name": "Req2Test-Bench repository", "url": "https://github.com/code-philia/Req2Test-Bench", "recorded_revision": "c0d7138f408bb7935d2c82e0fed82884f519b199", "verified": false},
+    {"name": "python-docx upstream", "url": "https://github.com/python-openxml/python-docx", "recorded_revision": "e45454602b53e8e572b179ccf1c91093ec9f4ed7", "verified": false}
+  ],
+  "licences_verified": false,
+  "local_files": [],
+  "verified_scenario_count": null,
+  "pilot_case_ids": [],
+  "reviewer_confirmed": false
+}

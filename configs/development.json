@@ -1,0 +1,11 @@
+{
+  "status": "proposed_not_frozen",
+  "helper_max_depth": 1,
+  "candidate_limits": [5, 10, 20],
+  "operating_k": null,
+  "primary_llm": null,
+  "embedding_model": null,
+  "model_budget": null,
+  "selection_seed": null,
+  "evaluation_frozen": false
+}
