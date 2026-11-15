@@ -7,3 +7,5 @@ data/raw/*
 data/processed/*
 reports/demo.*
 *.sqlite*
+
+reports/artificial_demo_source.txt
