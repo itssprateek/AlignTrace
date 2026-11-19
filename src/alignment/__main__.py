@@ -41,11 +41,21 @@ def main():
     sub.add_parser("doctor", help="Inspect the starter runtime")
     command = sub.add_parser("demo", help="Run the artificial offline evidence demonstration")
     command.add_argument("--output", type=Path, default=Path("reports"))
+    command = sub.add_parser("ingest", help="Verify and join the downloaded pinned python-docx dataset")
+    command.add_argument("--raw-root", type=Path, default=Path("data/raw/req2test-bench"))
+    command.add_argument("--output", type=Path, default=Path("data/processed/python-docx-v1"))
     args = parser.parse_args()
     if args.command == "doctor":
         print(json.dumps({"python": platform.python_version(), "sqlite": sqlite3.sqlite_version,
-                          "external_dependencies": [], "dataset_verified": False,
+                          "dataset_verified": None,
+                          "dataset_status": "Run ingest for checksum verification and saved counts",
                           "llm_configured": False}, indent=2))
+    elif args.command == "ingest":
+        from .ingest import ingest
+        try:
+            print(json.dumps(ingest(args.raw_root, args.output), indent=2))
+        except (ValueError, OSError, KeyError) as error:
+            parser.exit(1, "Ingestion failed: " + str(error) + "\n")
     else:
         demo(args.output)
 

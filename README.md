@@ -1,4 +1,4 @@
-# Requirement test alignment research
+# AlignTrace
 
 Prateek Kumar Verma — MSc Big Data and AI, SRH University Berlin.
 
@@ -8,12 +8,15 @@ Build and evaluate a framework that assesses individual requirement conditions a
 
 This starter provides validated evidence records, source-span and SHA-256 verification, SQLite persistence, and an offline command-line demonstration. It does not yet parse Gherkin, resolve Behave steps, retrieve tests, call an LLM, assess support automatically or perform thesis evaluation. The demo uses an explicitly artificial fixture; its findings are supplied examples, not model predictions or research results.
 
+The `ingest` command now verifies the pinned dataset release, joins scenario records to reference test files and deduplicates shared source content. It preserves the original Gherkin text without yet parsing individual step bindings. See `docs/ingestion.md` for inputs and outputs.
+
 ## Run locally
 
 Python 3.9 or newer. No third-party packages or API keys are needed for the starter.
 
 ```bash
-cd /Users/prateek/Documents/Codex/2026-11-15/new-chat-3/thesis-alignment
+git clone https://github.com/itssprateek/AlignTrace.git
+cd AlignTrace
 python3 -m venv .venv
 source .venv/bin/activate
 export PYTHONPATH="$PWD/src"
@@ -38,8 +41,10 @@ The demo writes `reports/demo.json`, `reports/demo.md` and `data/processed/demo.
 
 Verify pinned data and licences, recover the ten pilot case identifiers, then implement Gherkin ingestion against the actual source format. See `docs/pilot_checklist.md`, `docs/architecture.md`, `docs/decision_log.md` and `manifests/sources.json`. The recorded revisions are unverified planning inputs, not completed acquisitions.
 
+Release ingestion was verified on 19 November 2026: 5,086 release records, 239 unique python-docx scenarios and 22 unique linked test files. This supersedes the initial acquisition status above; licence-notice review, step-to-assertion mapping and human annotation remain pending. Generated verification evidence is stored in each ingestion run's `summary.json`.
+
 ## Project layout
 
 `src/alignment` holds the initial code; `tests` protects evidence and decision invariants; `manifests` records provenance; `data/raw` is for unchanged sources; `data/annotations` is for human labels; `configs`, `prompts` and `experiments` will hold versioned experiment settings; `reports/weekly` tracks actual progress; `thesis` holds chapters, figures and references.
 
-Do not commit credentials, virtual environments or restricted source material. No remote repository or publishing has been configured.
+Do not commit credentials, virtual environments or restricted source material. The project repository is https://github.com/itssprateek/AlignTrace.

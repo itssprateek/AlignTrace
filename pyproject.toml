@@ -9,6 +9,9 @@ description = "Evidence-preserving requirement test alignment research"
 requires-python = ">=3.9"
 dependencies = []
 
+[project.optional-dependencies]
+ingest = ["zstandard>=0.21,<1"]
+
 [project.scripts]
 alignment = "alignment.__main__:main"
 
