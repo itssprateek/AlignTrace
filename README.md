@@ -10,6 +10,8 @@ This starter provides validated evidence records, source-span and SHA-256 verifi
 
 The `ingest` command now verifies the pinned dataset release, joins scenario records to reference test files and deduplicates shared source content. It preserves the original Gherkin text without yet parsing individual step bindings. See `docs/ingestion.md` for inputs and outputs.
 
+After ingestion, `python -m alignment packet` creates the first static evidence packet with literal step candidates, exact function and assertion spans, one-hop helper candidates and blank human-review fields. See `docs/evidence_packets.md` for supported cases and limits. Static candidate matching does not establish runtime binding or support sufficiency.
+
 ## Run locally
 
 Python 3.9 or newer. No third-party packages or API keys are needed for the starter.

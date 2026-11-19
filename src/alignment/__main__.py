@@ -44,6 +44,10 @@ def main():
     command = sub.add_parser("ingest", help="Verify and join the downloaded pinned python-docx dataset")
     command.add_argument("--raw-root", type=Path, default=Path("data/raw/req2test-bench"))
     command.add_argument("--output", type=Path, default=Path("data/processed/python-docx-v1"))
+    command = sub.add_parser("packet", help="Build a static scenario evidence packet for human review")
+    command.add_argument("--data-dir", type=Path, default=Path("data/processed/python-docx-v1"))
+    command.add_argument("--instance-id", default="python-docx/features/api-open-document.feature:13")
+    command.add_argument("--output", type=Path, default=Path("data/processed/evidence/api-open-document-13"))
     args = parser.parse_args()
     if args.command == "doctor":
         print(json.dumps({"python": platform.python_version(), "sqlite": sqlite3.sqlite_version,
@@ -56,6 +60,12 @@ def main():
             print(json.dumps(ingest(args.raw_root, args.output), indent=2))
         except (ValueError, OSError, KeyError) as error:
             parser.exit(1, "Ingestion failed: " + str(error) + "\n")
+    elif args.command == "packet":
+        from .packet import create_packet
+        try:
+            print(json.dumps(create_packet(args.data_dir, args.instance_id, args.output), indent=2))
+        except (ValueError, OSError, KeyError, SyntaxError) as error:
+            parser.exit(1, "Packet creation failed: " + str(error) + "\n")
     else:
         demo(args.output)
 
